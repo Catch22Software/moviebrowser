@@ -1,10 +1,17 @@
+import {useHistory, Link} from "react-router-dom";
 
+const Navbar = ({searchText, setSearchText}) => {
 
-const Navbar = () => {
+    const history = useHistory()
+
+    const updateSearchText = (e) => {
+        history.push('/search')
+        setSearchText(e.target.value)
+    }
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">Movie Browser</a>
+                <Link className="navbar-brand" to="/">Movie Browser</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -13,18 +20,24 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
+                            <Link className="navbar-brand" aria-current="page" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
+                            <Link className="navbar-brand" to="/about">About</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link disabled">Disabled</a>
+                            <Link className="nav-link disabled" to="/" tabIndex="-1" aria-disabled="true">Coming Soon
+                            </Link>
                         </li>
                     </ul>
                     <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                        <input className="form-control me-2"
+                               type="search"
+                               placeholder="Search"
+                               aria-label="Search"
+                               value={searchText}
+                               onChange={updateSearchText}/>
+                        <button>Search</button>
                     </form>
                 </div>
             </div>
