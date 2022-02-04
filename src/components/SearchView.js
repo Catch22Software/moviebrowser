@@ -15,7 +15,7 @@ const MovieCard = ({movie}) => {
     const detailUrl = `/movies/${movie.id}`
     const altImgUrl = "https://images.unsplash.com/photo-1571847140471-1d7766e825ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=733&q=80"
     return (
-        <div className="col-lg-3 col-md-3 col-2 my-4">
+        <div className="col-sm-1 col-lg-3 col-md-3 col-2 my-4">
             <div className="card">
                 <img src={posterUrl} onError={({ currentTarget }) => {
                     currentTarget.onerror = null;
